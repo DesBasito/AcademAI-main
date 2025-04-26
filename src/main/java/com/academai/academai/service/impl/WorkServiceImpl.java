@@ -1,7 +1,7 @@
 package com.academai.academai.service.impl;
 
 import com.academai.academai.repository.WorkRepository;
-import com.academai.academai.service.WorkService;
+import com.academai.academai.service.interfaces.WorkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

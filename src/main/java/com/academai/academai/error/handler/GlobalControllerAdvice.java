@@ -1,7 +1,7 @@
 package com.academai.academai.error.handler;
 
 import com.academai.academai.error.ErrorResponseBody;
-import com.academai.academai.service.ErrorService;
+import com.academai.academai.service.interfaces.ErrorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

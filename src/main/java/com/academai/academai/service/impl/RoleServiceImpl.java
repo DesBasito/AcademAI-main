@@ -2,7 +2,7 @@ package com.academai.academai.service.impl;
 
 import com.academai.academai.entity.Role;
 import com.academai.academai.repository.RoleRepository;
-import com.academai.academai.service.RoleService;
+import com.academai.academai.service.interfaces.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

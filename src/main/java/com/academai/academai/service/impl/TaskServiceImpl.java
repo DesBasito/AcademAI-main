@@ -3,7 +3,7 @@ package com.academai.academai.service.impl;
 import com.academai.academai.dto.TaskDto;
 import com.academai.academai.entity.Task;
 import com.academai.academai.repository.TaskRepository;
-import com.academai.academai.service.TaskService;
+import com.academai.academai.service.interfaces.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

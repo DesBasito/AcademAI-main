@@ -1,6 +1,6 @@
 package com.academai.academai.validation.impl;
 
-import com.academai.academai.service.UserService;
+import com.academai.academai.service.interfaces.UserService;
 import com.academai.academai.validation.UniqueEmail;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

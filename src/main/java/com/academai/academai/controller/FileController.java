@@ -1,8 +1,8 @@
 package com.academai.academai.controller;
 
 import com.academai.academai.enums.FileType;
-import com.academai.academai.service.FileService;
-import com.academai.academai.service.UserService;
+import com.academai.academai.service.interfaces.FileService;
+import com.academai.academai.service.interfaces.UserService;
 import com.academai.academai.util.FileUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

@@ -3,8 +3,8 @@ package com.academai.academai.service.impl;
 import com.academai.academai.dto.ModuleDto;
 import com.academai.academai.entity.Module;
 import com.academai.academai.repository.ModuleRepository;
-import com.academai.academai.service.LessonService;
-import com.academai.academai.service.ModuleService;
+import com.academai.academai.service.interfaces.LessonService;
+import com.academai.academai.service.interfaces.ModuleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

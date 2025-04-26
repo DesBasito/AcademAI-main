@@ -3,9 +3,9 @@ package com.academai.academai.service.impl;
 import com.academai.academai.dto.LessonDto;
 import com.academai.academai.entity.Lesson;
 import com.academai.academai.repository.LessonRepository;
-import com.academai.academai.service.LessonService;
-import com.academai.academai.service.MaterialService;
-import com.academai.academai.service.TaskService;
+import com.academai.academai.service.interfaces.LessonService;
+import com.academai.academai.service.interfaces.MaterialService;
+import com.academai.academai.service.interfaces.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

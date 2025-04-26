@@ -1,4 +1,4 @@
-package com.academai.academai.service;
+package com.academai.academai.service.interfaces;
 
 import com.academai.academai.dto.user.UserDto;
 import com.academai.academai.entity.User;
@@ -23,4 +23,6 @@ public interface UserService {
     User getAuthenticatedUser();
 
     UserDto convertToUserDto(User user);
+
+    String activateUser(String code);
 }

@@ -6,9 +6,9 @@ import com.academai.academai.entity.Course;
 import com.academai.academai.entity.Enrollment;
 import com.academai.academai.entity.User;
 import com.academai.academai.repository.EnrollmentRepository;
-import com.academai.academai.service.CourseService;
-import com.academai.academai.service.EnrollmentService;
-import com.academai.academai.service.UserService;
+import com.academai.academai.service.interfaces.CourseService;
+import com.academai.academai.service.interfaces.EnrollmentService;
+import com.academai.academai.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

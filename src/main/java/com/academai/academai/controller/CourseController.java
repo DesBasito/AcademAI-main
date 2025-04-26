@@ -1,17 +1,12 @@
 package com.academai.academai.controller;
 
 import com.academai.academai.dto.CourseDto;
-import com.academai.academai.dto.MaterialDto;
-import com.academai.academai.entity.Material;
-import com.academai.academai.service.CourseService;
-import com.academai.academai.service.EnrollmentService;
-import com.academai.academai.service.MaterialService;
+import com.academai.academai.service.interfaces.CourseService;
+import com.academai.academai.service.interfaces.EnrollmentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 

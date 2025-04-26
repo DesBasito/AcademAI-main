@@ -3,7 +3,7 @@ package com.academai.academai.service.impl;
 import com.academai.academai.dto.CategoryDto;
 import com.academai.academai.entity.Category;
 import com.academai.academai.repository.CategoryRepository;
-import com.academai.academai.service.CategoryService;
+import com.academai.academai.service.interfaces.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.academai.academai.service.impl;
 
 import com.academai.academai.error.ErrorResponseBody;
-import com.academai.academai.service.ErrorService;
+import com.academai.academai.service.interfaces.ErrorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;

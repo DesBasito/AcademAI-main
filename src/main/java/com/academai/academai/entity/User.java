@@ -2,6 +2,8 @@ package com.academai.academai.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.Accessors;
+import lombok.experimental.FieldDefaults;
 
 
 import java.util.ArrayList;
@@ -12,25 +14,28 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Accessors(chain = true)
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String surname;
-    private String email;
-    private String password;
-    private String avatar;
+    Long id;
+    String name;
+    String surname;
+    String email;
+    String password;
+    String avatar;
+    String activationCode;
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private Role role;
-    private boolean enabled;
+    Role role;
+    boolean enabled;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Work> works;
+    List<Work> works;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Enrollment> enrollments;
+    List<Enrollment> enrollments;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<RefreshSession> refreshSessions;
+    List<RefreshSession> refreshSessions;
 }

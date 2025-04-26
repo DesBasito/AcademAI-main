@@ -4,9 +4,9 @@ import com.academai.academai.dto.CourseDto;
 import com.academai.academai.entity.Category;
 import com.academai.academai.entity.Course;
 import com.academai.academai.repository.CourseRepository;
-import com.academai.academai.service.CategoryService;
-import com.academai.academai.service.CourseService;
-import com.academai.academai.service.ModuleService;
+import com.academai.academai.service.interfaces.CategoryService;
+import com.academai.academai.service.interfaces.CourseService;
+import com.academai.academai.service.interfaces.ModuleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,7 @@ package com.academai.academai.service.impl;
 import com.academai.academai.dto.MaterialDto;
 import com.academai.academai.entity.Material;
 import com.academai.academai.repository.MaterialRepository;
-import com.academai.academai.service.MaterialService;
+import com.academai.academai.service.interfaces.MaterialService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,5 @@
-package com.academai.academai.service;
+package com.academai.academai.service.interfaces;
 
-import com.academai.academai.dto.user.GoogleLoginRequest;
 import com.academai.academai.dto.user.JwtResponse;
 import com.academai.academai.dto.user.LoginRequest;
 import com.academai.academai.dto.user.RegistrationRequest;
@@ -13,6 +12,8 @@ import java.util.UUID;
 
 public interface AuthService {
     JwtResponse register(RegistrationRequest request);
+
+    boolean addUser(RegistrationRequest request);
 
     JwtResponse login(LoginRequest loginRequest, HttpServletResponse response, HttpServletRequest request);
 

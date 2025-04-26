@@ -3,7 +3,7 @@ package com.academai.academai.service.impl;
 import com.academai.academai.entity.File;
 import com.academai.academai.enums.FileType;
 import com.academai.academai.repository.FileRepository;
-import com.academai.academai.service.FileService;
+import com.academai.academai.service.interfaces.FileService;
 import com.academai.academai.util.FileUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

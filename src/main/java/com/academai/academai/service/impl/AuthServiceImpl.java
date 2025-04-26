@@ -10,9 +10,9 @@ import com.academai.academai.entity.User;
 import com.academai.academai.enums.RoleName;
 import com.academai.academai.repository.RefreshSessionRepository;
 import com.academai.academai.repository.UserRepository;
-import com.academai.academai.service.AuthService;
-import com.academai.academai.service.RoleService;
-import com.academai.academai.service.UserService;
+import com.academai.academai.service.interfaces.AuthService;
+import com.academai.academai.service.interfaces.RoleService;
+import com.academai.academai.service.interfaces.UserService;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -33,6 +33,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
@@ -51,6 +53,7 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final RefreshSessionRepository refreshSessionRepository;
     private final UserService userService;
+    private final MailSender mailSender;
     @Value("${google.client-id}")
     private String googleClientId;
 
@@ -80,6 +83,41 @@ public class AuthServiceImpl implements AuthService {
         String token = jwtTokenProvider.generateToken(user.getEmail(), user.getRole().getRole());
         return new JwtResponse(token, user.getRole().getRole());
     }
+
+    @Override
+    public boolean addUser(RegistrationRequest request){
+        User userFromDb = userRepository.findByEmail(request.getEmail()).orElse(null);
+        if (userFromDb != null) return false;
+
+        Role role;
+        if (request.getIsStudent()){
+            role = roleService.findByName(RoleName.ROLE_STUDENT.name());
+        } else {
+            role = roleService.findByName(RoleName.ROLE_TEACHER.name());
+        }
+        User user = new User()
+                .setEnabled(false)
+                .setName(request.getName())
+                .setSurname(request.getSurname())
+                .setEmail(request.getEmail())
+                .setActivationCode(UUID.randomUUID().toString())
+                .setRole(role)
+                .setPassword(passwordEncoder.encode(request.getPassword()));
+        userRepository.save(user);
+        if(!StringUtils.hasText(request.getEmail())){
+            String message = String.format(
+                    """
+                            Hello, %s!
+                            
+                            Please activate your account by clicking on the link below:
+                            
+                            http://localhost:8080/api/auth/activate/%s
+                            """,user.getEmail(),user.getActivationCode());
+            mailSender.sendMail(user.getEmail(),"Activation code",message);
+        }
+        return true;
+    }
+
 
 
     @Override

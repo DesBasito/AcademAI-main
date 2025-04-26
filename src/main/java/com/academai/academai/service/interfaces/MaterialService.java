@@ -1,4 +1,4 @@
-package com.academai.academai.service;
+package com.academai.academai.service.interfaces;
 
 import com.academai.academai.dto.MaterialDto;
 import com.academai.academai.entity.Material;

@@ -1,7 +1,7 @@
 package com.academai.academai.controller;
 
 import com.academai.academai.dto.CategoryDto;
-import com.academai.academai.service.CategoryService;
+import com.academai.academai.service.interfaces.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

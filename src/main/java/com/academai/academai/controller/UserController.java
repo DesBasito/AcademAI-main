@@ -1,8 +1,8 @@
 package com.academai.academai.controller;
 
 import com.academai.academai.dto.user.UserDto;
-import com.academai.academai.service.EnrollmentService;
-import com.academai.academai.service.UserService;
+import com.academai.academai.service.interfaces.EnrollmentService;
+import com.academai.academai.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

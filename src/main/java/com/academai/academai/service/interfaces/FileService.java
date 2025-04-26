@@ -1,4 +1,4 @@
-package com.academai.academai.service;
+package com.academai.academai.service.interfaces;
 
 import com.academai.academai.enums.FileType;
 import org.springframework.web.multipart.MultipartFile;

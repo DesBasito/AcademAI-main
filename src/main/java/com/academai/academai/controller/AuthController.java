@@ -1,10 +1,10 @@
 package com.academai.academai.controller;
 
-import com.academai.academai.dto.user.GoogleLoginRequest;
 import com.academai.academai.dto.user.JwtResponse;
 import com.academai.academai.dto.user.LoginRequest;
 import com.academai.academai.dto.user.RegistrationRequest;
-import com.academai.academai.service.AuthService;
+import com.academai.academai.service.interfaces.AuthService;
+import com.academai.academai.service.interfaces.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,6 +26,7 @@ import java.util.UUID;
 @RequestMapping("api/auth")
 public class AuthController {
     private final AuthService authService;
+    private final UserService userService;
 
     @Operation(
             summary = "Регистрация учитель/студент",
@@ -39,6 +40,29 @@ public class AuthController {
     @PostMapping("register")
     public ResponseEntity<?> register(@RequestBody @Valid RegistrationRequest request) {
         return ResponseEntity.ok(authService.register(request));
+    }
+
+    @Operation(
+            summary = "Регистрация учитель/студент",
+            description = "Указать isStudent=true для студента, иначе создаётся учитель"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Успешная регистрация",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = JwtResponse.class)))
+    })
+    @PostMapping("register2")
+    public ResponseEntity<?> register2(@RequestBody @Valid RegistrationRequest request) {
+        if(!authService.addUser(request)){
+            return ResponseEntity.badRequest().body("User already exists");
+        }
+        return ResponseEntity.ok(authService.register(request));
+    }
+
+    @GetMapping("/activate/{code}")
+    public ResponseEntity<String> activateAccount(@PathVariable String code) {
+        String isActivated = userService.activateUser(code);
+        return ResponseEntity.ok(isActivated);
     }
 
 

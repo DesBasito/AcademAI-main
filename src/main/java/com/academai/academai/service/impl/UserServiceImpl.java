@@ -1,18 +1,14 @@
 package com.academai.academai.service.impl;
 
 import com.academai.academai.dto.user.UserDto;
-import com.academai.academai.entity.Role;
 import com.academai.academai.entity.User;
-import com.academai.academai.enums.RoleName;
 import com.academai.academai.repository.UserRepository;
-import com.academai.academai.service.RoleService;
-import com.academai.academai.service.UserService;
+import com.academai.academai.service.interfaces.UserService;
 import com.academai.academai.util.FileUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -86,5 +82,17 @@ public class UserServiceImpl implements UserService {
                 .email(user.getEmail())
                 .avatar(user.getAvatar())
                 .build();
+    }
+
+    @Override
+    public String activateUser(String code) {
+        User user = userRepository.findByActivationCode(code).orElse(null);
+        if (user != null) {
+            user.setEnabled(true);
+            user.setActivationCode(null);
+            userRepository.save(user);
+            return "User activated successfully!";
+        }
+        return "Activation code is invalid!";
     }
 }

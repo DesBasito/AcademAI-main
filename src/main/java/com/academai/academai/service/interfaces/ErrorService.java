@@ -1,4 +1,4 @@
-package com.academai.academai.service;
+package com.academai.academai.service.interfaces;
 
 import com.academai.academai.error.ErrorResponseBody;
 import org.springframework.validation.BindingResult;
