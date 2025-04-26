@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: courses
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: image
+                  type: varchar(500)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: teacher_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_courses_teachers
+                    references: users(id)
+              - column:
+                  name: category_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_courses_categories
+                    references: categories(id)
+

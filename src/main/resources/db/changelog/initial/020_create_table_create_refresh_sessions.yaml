@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-refresh-sessions
+      author: academai
+      changes:
+        - createTable:
+            tableName: refresh_sessions
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: refresh_token
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fingerprint
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ua
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ip
+                  type: VARCHAR(45)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_in
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+
+        - addForeignKeyConstraint:
+            baseTableName: refresh_sessions
+            baseColumnNames: user_id
+            constraintName: fk_user_refresh
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE

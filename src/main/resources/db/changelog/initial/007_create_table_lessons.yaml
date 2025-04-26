@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: lessons
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: module_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_lessons_modules
+                    references: modules(id)

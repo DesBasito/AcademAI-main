@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: parent_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_categories_to_categories
+                    references: categories(id)
+
+
+

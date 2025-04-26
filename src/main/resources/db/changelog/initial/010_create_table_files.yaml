@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 010
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: files
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: file
+                  type: VARCHAR(255)
+              - column:
+                  name: content_id
+                  type: BIGINT
+              - column:
+                  name: original_file_name
+                  type: VARCHAR(255)

@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: enrollments
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_id_to_courses
+                    references: users(id)
+              - column:
+                  name: course_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_course_id_to_users
+                    references: courses(id)
+              - column:
+                  name: enrollment_date
+                  type: TIMESTAMP
+                  defaultValueComputed: now()
+              - column:
+                  name: unenrollment_date
+                  type: TIMESTAMP
+              - column:
+                  name: is_active
+                  type: boolean
+                  defaultValueBoolean: true

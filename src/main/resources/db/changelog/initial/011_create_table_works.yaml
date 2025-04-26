@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 011
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: works
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_works_user
+                    references: users(id)
+              - column:
+                  name: task_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_works_task
+                    references: tasks(id)
+              - column:
+                  name: score
+                  type: INTEGER
+              - column:
+                  name: upload_time
+                  type: TIMESTAMP
+                  defaultValueComputed: now()

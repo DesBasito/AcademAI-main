@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 012
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: ai_review
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: work_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_ai_review_works
+                    references: works(id)
+              - column:
+                  name: score
+                  type: INTEGER
+              - column:
+                  name: feedback
+                  type: TEXT
